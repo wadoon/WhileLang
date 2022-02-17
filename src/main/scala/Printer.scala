@@ -10,7 +10,7 @@ object Printer {
       }
       case Assignment(variable, expression, typed) =>
         if (typed.isEmpty) s"$variable = ${print(expression)};"
-        else s"${typed.get} $variable = ${print(expression)}"
+        else s"${typed.get} $variable = ${print(expression)};"
       case If(condition, thenBody, elseBody) => {
         val otherwise :Option[String] = elseBody.map((a: Statement) => ("else" + print(a)))
         s"if(${print(condition)}) ${print(thenBody)}" + otherwise.getOrElse("")
@@ -23,6 +23,7 @@ object Printer {
       case UnaryExpr(right, op) => s"($op $right)"
       case IntLiteral(value) => value.toString
       case BoolLiteral(value) => value.toString
+      case Var(name) => name
       case FunctionCall(function, args) => s"${function}(${args.map(print).mkString(", ")})"
     }
 }

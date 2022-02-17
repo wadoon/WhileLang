@@ -36,4 +36,5 @@ case class BinaryExpr(left: Expr, right: Expr, op: Operator) extends Expr
 case class UnaryExpr(right: Expr, op: Operator) extends Expr
 case class IntLiteral(value: Int) extends Expr
 case class BoolLiteral(value: Boolean) extends Expr
+case class Var(name: String) extends Expr
 case class FunctionCall(function: String, args: List[Expr]) extends Expr
